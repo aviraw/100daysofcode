@@ -1,0 +1,20 @@
+import java.util.Arrays;
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int store=nums[0]; 
+        int top=0;
+        nums[top]=store;
+    
+        for(int i=0;i<nums.length-1;i++)
+        {
+            if(nums[i]!=store)
+            {
+                store=nums[i];
+                top++;
+                nums[top]=store; 
+            }
+        }
+        //Arrays.sort(nums);
+        return top+1;
+    }
+}
