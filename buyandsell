@@ -1,0 +1,41 @@
+//[1,2,3,4,5]
+class Solution {
+    public int maxProfit(int[] prices) {
+        int profit = 0;
+        int canbuy = 1;   //flag
+        int select = 0;   //pointer
+        int i = 0;
+        if(prices.length==2 && prices[1]>prices[0]){
+            int diff = prices[1]-prices[0];
+                    profit+=diff;
+        }
+        for(i=0;i<=prices.length-3;i++)
+        {
+            if(prices[i]<prices[i+1])
+            {
+                if(canbuy==1){
+                select = prices[i];
+                canbuy=0;
+                }
+                if(prices[i+1]<prices[i+2])
+                {
+                    continue;
+                }
+                else
+                {
+                    int diff = prices[i+1]-select;
+                    profit+=diff;
+                    canbuy=1;
+                }
+            } 
+            
+        }
+        if(i>=prices.length-2 && canbuy==0)
+        {
+                int diff = prices[i+1]-select;
+                    profit+=diff;
+                    canbuy=1;
+        }
+    return profit;
+    }
+}
