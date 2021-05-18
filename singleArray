@@ -1,0 +1,21 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        int l=nums.length;
+        int found = -10;
+        for(int i=0;i<l;i++)
+        {
+            found = nums[i];
+            for(int j=0;j<l;j++)
+            {
+                if(nums[i]==nums[j] && i!=j)
+                {
+                    found=-10;
+                    break;
+                }
+            }
+            if(found!=-10)
+                return found;
+        }
+        return 0;
+    }
+}
