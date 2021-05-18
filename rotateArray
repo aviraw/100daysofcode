@@ -1,0 +1,22 @@
+
+class Solution {
+    public void reverse(int[] nums, int low, int high)
+    {
+        while(low<high)
+        {
+            int t=nums[low];
+            nums[low]=nums[high];
+            nums[high]=t;
+            low++;
+            high--;
+        }
+    }
+    public void rotate(int[] nums, int k) {
+        int l=nums.length;
+        k=k%l;
+        
+        reverse(nums,0,l-k-1);
+        reverse(nums,l-k,l-1);
+        reverse(nums,0,l-1);
+    }
+}
