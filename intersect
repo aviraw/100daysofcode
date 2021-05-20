@@ -1,0 +1,36 @@
+
+import java.io.*;
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        
+        if(nums1.length<nums2.length)
+        {
+            int inter[]=new int[nums1.length];
+            int x=0;
+            for(int i=0;i<nums1.length;i++)
+            {
+                    if(nums1[i]==nums2[i])
+                        inter[x++]=nums1[i];
+                
+            }
+            return inter;
+        }
+        else
+        {
+             int inter[]=new int[nums2.length];
+            int x=0;
+            for(int i=0;i<nums2.length;i++)
+            {
+                
+                    if(nums1[i]==nums2[i])
+                        inter[x++]=nums1[i];
+                
+            }
+            return inter;
+        }
+        
+        
+    }
+}
