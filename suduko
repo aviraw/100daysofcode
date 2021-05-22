@@ -1,0 +1,26 @@
+class Solution {
+    boolean[][][] grids_tracker = new boolean[3][3][10];
+    boolean[] row_tracker = new boolean[10];
+    boolean[] column_tracker = new boolean[10];
+    boolean[][] visited = new boolean[9][9];
+    
+    public boolean isValidSudoku(char[][] board) {
+        for(int i=0; i < board.length; i++){
+            row_tracker = new boolean[10];
+            column_tracker = new boolean[10];
+            for(int j=0;  j < board[0].length; j++){                
+                if(board[i][j] != '.'){
+                    if((!visited[i][j] && grids_tracker[i/3][j/3][board[i][j] - '0']) || row_tracker[board[i][j] - '0']){ return false;}
+                    grids_tracker[i/3][j/3][board[i][j] - '0'] = row_tracker[board[i][j] - '0'] = true;   
+                }
+                visited[i][j] = true;
+                if(board[j][i] != '.'){
+                    if((!visited[j][i] && grids_tracker[j/3][i/3][board[j][i] - '0']) || column_tracker[board[j][i] - '0']){return false;}
+                    grids_tracker[j/3][i/3][board[j][i] - '0'] = column_tracker[board[j][i] - '0'] = true;
+                }
+                visited[j][i] = true;
+            }
+        }
+        return true;
+    }
+}
