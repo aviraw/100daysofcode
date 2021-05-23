@@ -1,0 +1,23 @@
+//string2
+
+
+class Solution {
+    public int reverse(int x) {
+        int d=0;
+        int t=x;
+        int rev=0;
+        int last=0;
+        while(t!=0)
+        {
+            d=t%10;
+            last=rev;
+            rev=(rev*10)+d;
+            if(last!=((rev-d)/10))
+            {
+               return 0;
+            }
+            t=t/10;
+        }
+        return rev;
+    }
+}
