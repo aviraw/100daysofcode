@@ -1,0 +1,45 @@
+//string 3
+class Solution {
+    public int firstUniqChar(String s) {
+       HashMap<String,Integer> m = new HashMap<>();
+        
+        for(int i=0;i<s.length();i++)
+        {
+            char d=s.charAt(i);
+            String x=Character.toString(d);
+            if(m.containsKey(x))
+            {
+                m.put(x,m.get(x)+1);
+            }
+            else
+            {
+                m.put(x,1);
+            }
+        }
+        String found="";
+         int ans = -1;
+        // for(String i : m.keySet())
+        // {
+        //     System.out.println(i+"-"+m.get(i));
+        // }
+        // System.out.println("");
+        int small=s.length();
+        for(String i : m.keySet())
+        {
+            if(m.get(i)<2)
+            {
+                found=i;
+                // System.out.println(found);
+                ans = s.indexOf(found);
+                if(ans<small){
+                    small=ans;
+                    // System.out.println(small);
+                }
+            }
+        }
+        if(small==s.length())
+        return -1;
+        else
+        return small;
+    }     
+}
