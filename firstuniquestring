@@ -1,0 +1,25 @@
+//n*n
+//string 3
+class Solution {
+    public int firstUniqChar(String s) {
+        int found=-1;
+        for(int i=0;i<s.length();i++)
+        {
+            char d=s.charAt(i);
+            int count = 0;
+	        for (int j=0; j < s.length(); j++)
+	        {
+	            if (s.charAt(j) == d)
+	            {
+	                count++;
+	            }
+	        }
+            if(count<2)
+            {
+                found=i;
+                break;
+            }
+        }
+        return found;
+    }
+}
