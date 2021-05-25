@@ -1,4 +1,4 @@
-//string 6
+// string 6
 class Solution {
     public int myAtoi(String s) {
         s=s.trim();
