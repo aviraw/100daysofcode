@@ -1,0 +1,40 @@
+//string 7
+class Solution {
+    public int strStr(String haystack, String needle) {
+        if(needle.length()>haystack.length())
+            return -1;
+        if(needle.length()==0)
+            return 0;
+        int ans=-1;
+        for(int i=0;i<haystack.length()-needle.length()+1;i++)
+        {
+            char d=haystack.charAt(i);
+            // System.out.println(d);
+        
+            if(d==needle.charAt(0))
+            {
+                ans=i;
+                // System.out.println("ans = "+ans);
+                int flag=0;
+                for(int j=0;j<needle.length();j++)
+                {
+                    if(i+j>haystack.length()-1)
+                    break;
+                    flag=0;
+                    // System.out.println("f=0");
+                    // System.out.println("in "+i+j);
+                    if(needle.charAt(j)==haystack.charAt(i+j))
+                    flag=1;
+                     // System.out.println("f=1");}
+                    if(needle.charAt(j)!=haystack.charAt(i+j))
+                    break;
+             
+                    
+                }
+                if(flag==1)
+                    return ans;
+            }
+        }
+        return -1;
+    }
+}
