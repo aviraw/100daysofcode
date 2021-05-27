@@ -1,0 +1,24 @@
+//string 8
+class Solution {
+    public String countAndSay(int n) {
+        if(n<=0)
+            return "";
+        String c="1";
+        for(int i=n;i>1;--i)
+        {
+            StringBuilder res = new StringBuilder();
+            for(int j=0;j<c.length();++j)
+            {
+                int count=1;
+                while((j+1<c.length())&&(c.charAt(j)==c.charAt(j+1)))
+                {
+                    ++count;
+                    ++j;
+                }
+                res.append(count).append(c.charAt(j));
+            }
+            c=res.toString();
+        }
+        return c;
+    }
+}
