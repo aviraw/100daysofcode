@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    long long t;
+    cin>>t;
+    while(t--)
+    {
+        long long D,d,P,Q;
+        cin>>D>>d>>P>>Q;
+        long long res=P*D;
+        long long remaining_days=D-d;
+        long long mul=remaining_days/d;
+        long long sum=(mul*(mul+1))/2;
+        
+        res=res+(sum*d*Q);
+        
+        if(remaining_days%d!=0)
+        {
+            remaining_days=remaining_days-(mul*d);
+            res=res+remaining_days*(mul+1)*Q;
+        }
+        cout<<res<<"\n";
+    }
+    return 0;
+}
