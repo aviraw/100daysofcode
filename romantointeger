@@ -1,0 +1,56 @@
+class Solution {
+    public int romanToInt(String s) {
+        s=s+"*";
+        int c=0;
+        for(int i=0;i<s.length();i++)
+        {
+            char d=s.charAt(i);
+            System.out.println("d"+d);
+            if(d=='*')
+            c+=0;
+            if(d=='I')
+            {
+                System.out.println("+1"+s.charAt(i+1));
+                if(s.charAt(i+1)=='V')
+                {c+=4; i++;}
+                else if(s.charAt(i+1)=='X')
+                {c+=9; i++;}
+                else
+                c+=1;
+            }
+            if(d=='V')
+            c+=5;
+            if(d=='X')
+            {
+                if(s.charAt(i+1)=='L')
+                {c+=40; i++;}
+                else if(s.charAt(i+1)=='C')
+                {c+=90; i++;}
+                else
+                c+=10;
+            }
+            if(d=='L')
+            c+=50;
+            if(d=='C')
+            {
+                if(s.charAt(i+1)=='D')
+                {c+=400; i++;}
+                else if(s.charAt(i+1)=='M')
+                {c+=900; i++;}
+                else
+                c+=100;
+            }
+            if(d=='D')
+            c+=500;
+            if(d=='M')
+            c+=1000;
+        }
+        return c;
+    }
+}
+
+             
+            
+             
+             
+             
