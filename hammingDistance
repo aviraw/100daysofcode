@@ -1,0 +1,16 @@
+//funny
+
+class Solution {
+    public int hammingDistance(int x, int y) {
+        int n = x^y;
+        int count = hammingWeight(n);
+        return count;
+    }
+
+    public int hammingWeight(int n) {
+      
+        if(n==0) return 0;
+        else
+        return ((n&1)+(hammingWeight(n>>>1)));
+    }
+}
