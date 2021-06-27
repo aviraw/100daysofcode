@@ -1,0 +1,62 @@
+class Solution {
+    Stack<Character> stack;
+     public Solution() {
+        this.stack=new Stack<Character>();
+    }
+    public char valid(char c)
+    {
+        if(c=='[')
+            return ']';
+        else if(c=='(')
+            return ')';
+        else if(c=='{')
+            return '}';
+        return '*';
+    }
+    public boolean isValid(String s) {
+        int i=0;
+        stack.push('0');
+        top();
+        stack.push(s.charAt(i));
+        top();
+        i++;
+        
+        while(i!=s.length() && s.charAt(i)!='0')
+        {
+            char d=s.charAt(i);
+            
+            System.out.println("d"+d+"i"+i);
+            if(d==valid(top()))
+            {
+                
+                System.out.println("pop");
+                stack.pop();
+                i++;
+            }
+            else
+            {
+                System.out.println("push");
+                stack.push(d);
+                i++;
+            }
+        }
+        if(top()!='0')
+            return false;
+        else
+            return true;
+        
+    }
+    public void push(char val) {
+        System.out.println(val);
+        stack.push(val);
+    }
+    
+    public void pop() {
+        System.out.println(stack.pop());
+    }
+    
+    public char top() {
+        System.out.println("peek"+stack.peek());
+        return stack.peek();
+    }
+}
