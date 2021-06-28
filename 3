@@ -1,0 +1,46 @@
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Set<List<Integer>> v=new HashSet<>();
+        List<List<Integer>> f = new ArrayList<>();
+        int l=nums.length;
+        List <Integer> a=new ArrayList<>();
+        for(int i=0;i<nums.length;i++)
+        {
+            a.add(nums[i]);
+        }
+        for(int i=0;i<l;i++)
+        {
+            for(int j=i+1;j<l;j++)
+            {
+                List <Integer> b=new ArrayList<>();
+              int sum=-1*(nums[i]+nums[j]);
+                  if(a.contains(sum))
+                  {
+                      int k=a.indexOf(sum);
+                      if(i!=j&&i!=k&&j!=k)
+                      {
+                          b.add(nums[i]);
+                          b.add(nums[j]);
+                          b.add(nums[k]);
+                         
+                      }
+                  }
+ 
+                    
+                        // List<Integer> t=new ArrayList<>();
+                        // t.add(nums[i]);
+                        // t.add(nums[j]);
+                        // t.add(nums[k]);
+                        Collections.sort(b);
+                        if(b.size()>0)v.add(b);
+                    
+                
+            }
+        }
+        for(List m : v)
+        {
+            f.add(m);
+        }
+        return f;
+    }
+}
