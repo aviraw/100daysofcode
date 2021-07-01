@@ -1,0 +1,36 @@
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int l=matrix.length;
+        int r=matrix[0].length;
+        
+        for(int i=0;i<l;i++)
+        {
+            for(int j=0;j<r;j++)
+            {
+                if(matrix[i][j]==0)
+                {
+                    for(int k=0;k<r;k++)
+                    {
+                        if(matrix[i][k]!=0)
+                        matrix[i][k]=-2000;
+                    }
+                    for(int k=0;k<l;k++)
+                    {
+                        if(matrix[k][j]!=0)
+                        matrix[k][j]=-2000;
+                    }
+                }
+            }
+        }
+        for(int i=0;i<l;i++)
+        {
+            for(int j=0;j<r;j++)
+            {
+                if(matrix[i][j]==-2000)
+                {
+                    matrix[i][j]=0;
+                }
+            }
+        }
+    }
+}
