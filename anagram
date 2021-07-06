@@ -1,4 +1,6 @@
+
 class Solution {
+
     public List<List<String>> groupAnagrams(String[] strs) {
         List<String> a=new ArrayList<>();
         List<List<String>> b=new ArrayList<>();
@@ -32,9 +34,6 @@ class Solution {
                 (b.get(0)).add(strs[i]);
             }
         }
-        
-        
-        
         return b;
     }
 }
