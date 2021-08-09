@@ -1,0 +1,41 @@
+Node left = null;
+    private Node reArrangeLinkedList(Node head)
+    if (head != null)
+    {
+        left = head;
+        reorderListUtil(left);
+    }
+    return head;
+    }
+    void reorderListUtil(Node right)
+    {
+ 
+        if (right == null) {
+            return;
+        }
+ 
+        reorderListUtil(right.next);
+        if (left == null) {
+            return;
+        }
+        if (left != right && left.next != right) 
+        {
+            Node temp = left.next;
+            left.next = right;
+            right.next = temp;
+            left = temp;
+        }
+        else
+        { 
+            if (left.next == right)
+            {
+                left.next.next = null; 
+                left = null;
+            }
+            else
+            {
+                left.next = null;
+                left = null;
+            }
+        }
+    }
