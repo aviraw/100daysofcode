@@ -1,1 +1,3 @@
-int get_hash (string Result) { long long p = 31, res = 0: long long mod = 1000000007: for (int i = 0; i < (int)Result length() i++) { res += ((Result[i] - 'a' + 1) (p% mod)) % mod: res%= mod: p=31; p %=mod: } return res % mod; }
+int get_hash (string Result)
+{ 
+long long p = 31, res = 0: long long mod = 1000000007: for (int i = 0; i < (int)Result length() i++) { res += ((Result[i] - 'a' + 1) (p% mod)) % mod: res%= mod: p=31; p %=mod: } return res % mod; }
