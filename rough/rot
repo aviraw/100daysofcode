@@ -1,0 +1,23 @@
+rotatestringbykstep()
+{
+String[] words = name.split(" ");
+rightRotate(words, k);
+ 
+return (Arrays.toString(words));
+}
+public static void rightRotateByOne(int[] A)
+{
+    int last = A[A.length - 1];
+    for (int i = A.length - 2; i >= 0; i--)
+    {
+        A[i + 1] = A[i];
+    }
+ 
+    A[0] = last;
+}
+public static void rightRotate(int[] A, int k)
+{
+    for (int i = 0; i < k; i++) {
+        rightRotateByOne(A);
+    }
+}
