@@ -1,0 +1,16 @@
+private static int traverse(Node root, Set<Integer> mSet) {
+
+        if (root == null || mSet.contains(root.data)) {
+           return mSet.size();
+        }
+
+        //Add the root to the set
+        mSet.add(root.data);
+        int l = traverse(root.left, mSet);
+        int r = traverse(root.right, mSet);
+        //Backtrack and remove the element from the set
+        mSet.remove(root.data);
+
+        //return the max path
+        return Math.max(l, r);
+    }
