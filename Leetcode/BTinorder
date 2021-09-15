@@ -1,0 +1,18 @@
+//recursive approach
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> a=new ArrayList<>();
+        if(root==null)return a;
+        helper(root,a);
+        return a;
+    }
+    public void helper(TreeNode root, List<Integer> a)
+    {
+            if(root.left!=null)
+            helper(root.left,a);
+            a.add(root.val);
+            if(root.right!=null)
+            helper(root.right,a);
+    }
+}
+//iterative approach
