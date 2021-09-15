@@ -16,3 +16,21 @@ class Solution {
     }
 }
 //iterative approach
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> out=new ArrayList<>();
+        Stack<TreeNode> st=new Stack<>();
+        if(root==null) return out;
+        TreeNode cur=root;
+        while(cur!=null || !st.isEmpty()){
+            while(cur!=null){
+                st.push(cur);
+                cur=cur.left;
+            }
+            cur=st.pop();
+            out.add(cur.val);
+            cur=cur.right;
+        }
+        return out;
+    }
+}
