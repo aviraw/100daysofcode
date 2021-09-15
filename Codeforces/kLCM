@@ -1,0 +1,18 @@
+if(n % 2 == 1){
+                    int a = n/2;
+                    int b = n/2;
+                    int c = 1;
+                    System.out.println(a+" "+b+" "+c);
+                }else{
+                    if(n % 4 == 0){
+                        int a = n/2;
+                        int b = n/4;
+                        int c = n/4;
+                        System.out.println(a+" "+b+" "+c);
+                    }else{
+                        int a = n/2 - 1;
+                        int b = n/2 - 1;
+                        int c = 2;
+                        System.out.println(a+" "+b+" "+c);
+                    }
+                }
