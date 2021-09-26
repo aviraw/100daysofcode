@@ -1,0 +1,47 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+//pre Root > Left > Right
+//in Left > Root > Right
+// we will form the tree on the basis of appearence in inorder while traversing the preorder as it starts from root
+class Solution {
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        return helper(0, preorder.length-1, 0, inorder.length-1, preorder, inorder);
+    }
+    public TreeNode helper(int pst, int pend, int inst, int inend, int[] preorder, int[] inorder)
+    {
+        if(inst>inend || pst>pend) return null;
+        
+        TreeNode root=new TreeNode(preorder[pst]);
+        
+        //now we find the current root node in the inorder array by this for loop
+        int curr=0;
+        for(int i=inst;i<=inend;i++)
+        {
+            if(inorder[i]==root.val)
+            {curr=i; break;}   
+        }
+        
+        //now boundary for left child in the preorder array is from pst+1 to curr-1
+        //and boundary for right child is pst + (curr-inst) + 1. this skips all the left subtree nodes
+        
+        //Also boundary for left child in inorder array is from inst to curr-1
+        //and for right child it is from curr+1 to inend
+        
+        root.left=helper(pst+1, pend, inst, curr-1, preorder, inorder);
+        root.right=helper(pst+curr-inst+1, pend, curr+1, inend, preorder, inorder);
+        return root;
+    }
+}
