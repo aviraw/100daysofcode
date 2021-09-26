@@ -1,0 +1,36 @@
+class Solution {
+    public int getSum(int a, int b) {
+        int c=0;
+        if(a>=0 && b>=0){
+        for(int i=1;i<=Math.abs(a);i++)
+            c++;
+        for(int i=1;i<=Math.abs(b);i++)
+            c++;
+         }
+        else if(a>0 && b<0)
+        {
+            for(int i=1;i<=Math.abs(a);i++)
+            c++;
+            for(int i=1;i<=Math.abs(b);i++)
+            c--;  
+        
+        }
+        else if(a<0 && b>0){
+        for(int i=1;i<=Math.abs(a);i++)
+            c--;
+        for(int i=1;i<=Math.abs(b);i++)
+            c++;
+        
+         }
+        else if(a<0 && b<0){
+        for(int i=1;i<=Math.abs(a);i++)
+            c++;
+        for(int i=1;i<=Math.abs(b);i++)
+            c++;
+            
+        c=c*-1;
+         }
+            
+        return c;
+    }
+}
