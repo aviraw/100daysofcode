@@ -1,4 +1,5 @@
 METHOD 1 using QUEUE
+
 class Solution {
     public Node connect(Node root) {
         if(root==null) return root;
