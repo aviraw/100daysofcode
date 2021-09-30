@@ -1,4 +1,4 @@
-
+METHOD 1 using QUEUE
 class Solution {
     public Node connect(Node root) {
         if(root==null) return root;
@@ -31,3 +31,27 @@ class Solution {
         return root;
     }
 }
+
+METHOD 2 O(1) soace
+
+class Solution {
+    public Node connect(Node root) {
+        if(root==null) return root;
+        Node trav=root;
+        while(trav.left!=null)
+        {
+            Node head= trav;
+            while(head!=null)
+            {
+                head.left.next=head.right;
+                if(head.next!=null)
+                    head.right.next=head.next.left;
+                
+                head=head.next;
+            }
+           trav=trav.left; 
+        }
+        return root;
+    }
+}
+
