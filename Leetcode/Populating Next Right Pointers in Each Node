@@ -54,4 +54,7 @@ class Solution {
         return root;
     }
 }
-
+//trav moves entire left node depth
+//with head what we wanted to do is update next
+//head.left.next is pointed to head.right
+//and secondly head.right.next is pointed to head.next.left
