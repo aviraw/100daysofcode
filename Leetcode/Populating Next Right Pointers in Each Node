@@ -1,0 +1,33 @@
+
+class Solution {
+    public Node connect(Node root) {
+        if(root==null) return root;
+        Queue<Node> q=new LinkedList<>(); //make a queue and add these 2
+        q.add(root);
+        q.add(null);
+        
+        while(!q.isEmpty())
+        {
+            Node curr=q.poll();   //retrieve element from queue
+            if(curr==null && q.isEmpty())
+            {
+                return root;    //work done
+            }
+            else if(curr==null)
+            {
+                q.add(null);   //reached end? put null back in queue and continue
+                continue;
+            }
+            else        //level order work
+            {
+                curr.next = q.peek();  //this is what we wanted to do in this question
+                
+                if(root.left!=null)
+                q.add(root.left);
+                if(root.right!=null)
+                q.add(root.right);
+            }
+        }      
+        return root;
+    }
+}
