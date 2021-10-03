@@ -1,0 +1,33 @@
+METHOD 1 - Using Inorder
+
+class Solution {
+    public int kthSmallest(TreeNode root, int k) {
+        List<Integer> out= inorderTrav(root);
+        int r=out.get(k-1);
+        return r;
+    }
+    public List<Integer> inorderTrav(TreeNode root)
+    {
+        if(root==null) return null;
+        Stack<TreeNode> st = new Stack<>();
+        List<Integer> out=new ArrayList<>();
+        TreeNode curr=root;
+        while(!st.isEmpty() || curr!=null )
+        {
+            if(curr!=null)
+            {
+                st.push(curr);
+                curr=curr.left;
+            }
+            else
+            {
+                TreeNode n=st.pop();
+                out.add(n.val);
+                curr=n.right;
+            }
+        }
+        return out;
+    }
+}
+
+Method 2 -
