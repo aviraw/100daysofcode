@@ -1,4 +1,4 @@
-METHOD 1 - Using Inorder
+METHOD 1 - Using Inorder O(n)
 
 class Solution {
     public int kthSmallest(TreeNode root, int k) {
@@ -30,4 +30,26 @@ class Solution {
     }
 }
 
-Method 2 -
+Method 2 - Without List using recursion - cuts on space complexity
+
+class Solution {
+    public int kthSmallest(TreeNode root, int k) {
+        int nums[]=new int[2];
+        inorderTrav(root, nums, k);
+        
+        return nums[1];
+    }
+    public void inorderTrav(TreeNode root, int[] nums, int k)
+    {
+        if(root==null) return;  //go all the way to left
+        
+        inorderTrav(root.left,nums,k);
+        if(++nums[0]==k){          // did we reach k?
+            nums[1]=root.val;        //perfect we got it!
+            return;
+        }
+        //else we do it again for right child
+        inorderTrav(root.right, nums, k);
+             
+    }
+}
