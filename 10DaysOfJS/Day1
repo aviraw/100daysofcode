@@ -1,0 +1,29 @@
+#Day 1: Arithmetic Operators
+
+function getArea(length, width) {
+    let area;
+    area = length * width;
+    
+    return area;
+}
+
+function getPerimeter(length, width) {
+    let perimeter;
+    perimeter = 2 * (length + width);   
+    return perimeter;
+}
+
+
+#Day 1: Functions
+
+function factorial(n)
+{
+    if(n==1)
+    return 1;
+    else
+    return n*factorial(n-1);
+}
+
+#Day 1: Let and Const
+
+
