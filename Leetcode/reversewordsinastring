@@ -1,0 +1,31 @@
+#include<stack>
+class Solution {
+public:
+    string reverseWords(string s) {
+        stack<string> words;
+        s+=" ";
+        string word="";
+        for(int i=0;i<s.length();i++)
+        {
+            if(s[i]==' ')
+            {
+                if(word.length()!=0)
+                words.push(word);
+                word="";
+            }
+            else
+            {
+                if(s[i]!=' ')
+                word+=s[i];
+            }
+        }
+        string result="";
+        while(!words.empty())
+        {
+            result+=words.top();
+            words.pop();
+            if(!words.empty())
+            result+=" ";
+        }
+        return result;
+    }
