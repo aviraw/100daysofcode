@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+         int n = nums.size();
+        vector<int> output(n, 1);
+        
+        // First pass: calculate products of all elements to the left of each index
+        for (int i = 1; i < n; ++i) {
+            output[i] = output[i - 1] * nums[i - 1];
+        }
+        
+        // Second pass: calculate products of all elements to the right of each index
+        int rightProduct = 1;
+        for (int i = n - 1; i >= 0; --i) {
+            output[i] *= rightProduct;
+            rightProduct *= nums[i];
+        }
+        
+        return output;
+    }
+};
