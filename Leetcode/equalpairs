@@ -1,0 +1,37 @@
+class Solution {
+public:
+   //We are choosing to use the string so that there is no integer overflow
+   string convertToString(const vector<int>& v) {
+        string result;
+        for (int num : v) {
+            result += to_string(num) + ",";
+        }
+        return result;
+    }
+
+    int equalPairs(vector<vector<int>>& grid) {
+        unordered_map<string, int> row_map;
+        int n = grid.size();
+        int count = 0;
+
+        // Convert rows to string representations and store in row_map
+        for (int i = 0; i < n; i++) {
+            string conv = convertToString(grid[i]);
+            row_map[conv]++;
+        }
+
+        // Convert columns to string representations and compare with row_map
+        for (int j = 0; j < n; j++) {
+            vector<int> column(n);
+            for (int i = 0; i < n; i++) {
+                column[i] = grid[i][j];
+            }
+            string colconv = convertToString(column);
+            if (row_map.find(colconv) != row_map.end()) {
+                count += row_map[colconv];
+            }
+        }
+
+        return count;
+    }
+};
