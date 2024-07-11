@@ -1,0 +1,33 @@
+class Solution {
+public:
+    string decodeString(string s) {
+        int index = 0;
+        return decodeStringHelper(s, index);
+    }
+
+    string decodeStringHelper(string& s, int& index) {
+        string result = "";
+        long long count = 0;
+        while (index < s.length()) {
+            char ch = s[index];
+            if (isdigit(ch)) {
+                count = count * 10 + (ch - '0'); // Build the number
+            } else if (ch == '[') {
+                index++; //skip '[' character
+                string decodedString = decodeStringHelper(s, index); //helper to build string
+                for (int i = 0; i < count; i++) {
+                    result += decodedString; //append this string count times
+                }
+                count = 0; //reset
+            } else if (ch == ']') {
+                return result;
+            } else {
+                result += ch;
+            }
+            index++;
+        }
+        return result;
+    }
+};
+
+//problem link https://leetcode.com/problems/decode-string/description/
