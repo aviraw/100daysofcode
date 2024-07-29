@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+        vector<vector<int>> paths;
+        vector<int> currentPath;
+        hasPathSumHelper(root, targetSum, currentPath, paths);
+        return paths;
+    }
+
+private:
+    void hasPathSumHelper(TreeNode* root, int targetSum, vector<int>& currentPath, vector<vector<int>>& paths) {
+        if (root == nullptr)
+            return;
+        
+        // Add current node's value to the path
+        currentPath.push_back(root->val);
+
+        // Check if the current node is a leaf and its value completes the path
+        if (root->left == nullptr && root->right == nullptr && targetSum == root->val) {
+            paths.push_back(currentPath);
+        } else {
+            // Otherwise, continue to explore the left and right subtrees
+            hasPathSumHelper(root->left, targetSum - root->val, currentPath, paths);
+            hasPathSumHelper(root->right, targetSum - root->val, currentPath, paths);
+        }
+
+        // Remove the current node's value to backtrack
+        currentPath.pop_back();
+    }
+};
